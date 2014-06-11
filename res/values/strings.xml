@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LazyMaster - the Life Helper</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- Menu Zone -->
+    <string name="action_new">New Jobs</string>
+    <string name="action_about">About Me</string>
+    
+    <!-- Column Zone -->
+    <string name="column_title_hint">Task Title</string>
+    <string name="column_switcher_on">On</string>
+    <string name="column_switcher_off">Off</string>
+    <string name="column_start_time_text">From</string>
+    <string name="column_end_time_text">To</string>
+    <string name="column_sound_mode_text">Sound Mode</string>
+    <string name="column_repeat_day">Repeat</string>
+    <string name="column_week_mon">Mon</string>
+    <string name="column_week_tue">Tue</string>
+    <string name="column_week_wed">Wed</string>
+    <string name="column_week_thu">Thu</string>
+    <string name="column_week_fri">Fri</string>
+    <string name="column_week_sat">Sat</string>
+    <string name="column_week_sun">Sun</string>
+
+</resources>
