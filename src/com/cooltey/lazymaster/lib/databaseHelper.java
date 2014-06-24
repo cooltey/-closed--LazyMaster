@@ -23,10 +23,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 		@Override
 		public void onCreate(SQLiteDatabase db)
 		{
-			String DATABASE_CREATE_TABLE = "CREATE TABLE lazy_master (_ID INTEGER PRIMARY KEY, title TEXT, " +
-					" start_time TEXT, end_time TEXT, brightness TEXT, sounds TEXT, " +
-					" week_sun TEXT, week_mon TEXT, week_tue TEXT, " +
-					" week_wed TEXT, week_thu TEXT, week_fri TEXT," +
+			String DATABASE_CREATE_TABLE = "CREATE TABLE lazy_master (_ID INTEGER PRIMARY KEY, " +
+					" title TEXT, " +
+					" swticher TEXT, " +
+					" start_time TEXT, " +
+					" end_time TEXT, " +
+					" brightness TEXT, " +
+					" sounds TEXT, " +
+					" repeat_day TEXT, " +
+					" week_sun TEXT," +
+					" week_mon TEXT," +
+					" week_tue TEXT, " +
+					" week_wed TEXT," +
+					" week_thu TEXT," +
+					" week_fri TEXT," +
 					" week_sat TEXT);";
 			
 			db.execSQL(DATABASE_CREATE_TABLE);		
