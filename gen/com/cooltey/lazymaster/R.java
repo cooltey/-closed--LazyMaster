@@ -8,6 +8,9 @@
 package com.cooltey.lazymaster;
 
 public final class R {
+    public static final class array {
+        public static final int sound_mode=0x7f0b0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -912,15 +915,17 @@ containing a value of this type.
         public static final int abs__toast_frame=0x7f02006f;
         public static final int ic_action_about=0x7f020070;
         public static final int ic_action_brightness_medium=0x7f020071;
-        public static final int ic_action_good=0x7f020072;
-        public static final int ic_action_new=0x7f020073;
-        public static final int ic_action_phone=0x7f020074;
-        public static final int ic_action_volume_muted=0x7f020075;
-        public static final int ic_action_volume_on=0x7f020076;
-        public static final int ic_launcher=0x7f020077;
-        public static final int layer_item=0x7f020078;
-        public static final int layer_item_pressed=0x7f020079;
-        public static final int layer_item_selector=0x7f02007a;
+        public static final int ic_action_collapse=0x7f020072;
+        public static final int ic_action_expand=0x7f020073;
+        public static final int ic_action_good=0x7f020074;
+        public static final int ic_action_new=0x7f020075;
+        public static final int ic_action_phone=0x7f020076;
+        public static final int ic_action_volume_muted=0x7f020077;
+        public static final int ic_action_volume_on=0x7f020078;
+        public static final int ic_launcher=0x7f020079;
+        public static final int layer_item=0x7f02007a;
+        public static final int layer_item_pressed=0x7f02007b;
+        public static final int layer_item_selector=0x7f02007c;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040020;
@@ -979,7 +984,7 @@ containing a value of this type.
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int sounds=0x7f04003c;
+        public static final int sound_mode=0x7f04003c;
         public static final int start_time=0x7f040038;
         public static final int start_time_text=0x7f040037;
         public static final int switcher=0x7f040036;
@@ -1026,7 +1031,7 @@ containing a value of this type.
         public static final int sherlock_spinner_item=0x7f030018;
     }
     public static final class menu {
-        public static final int main=0x7f0b0000;
+        public static final int main=0x7f0c0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1074,6 +1079,7 @@ containing a value of this type.
         public static final int action_new=0x7f090010;
         public static final int action_settings=0x7f09000e;
         public static final int app_name=0x7f09000d;
+        public static final int column_brightness=0x7f090020;
         public static final int column_end_time_text=0x7f090016;
         public static final int column_repeat_day=0x7f090018;
         public static final int column_sound_mode_text=0x7f090017;

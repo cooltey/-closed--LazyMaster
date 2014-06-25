@@ -5,8 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-	public class databaseHelper extends SQLiteOpenHelper 
+	public class DatabaseHelper extends SQLiteOpenHelper 
 	{
 		private static final String DATABASE = "database.db";
 		
@@ -14,7 +15,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 		
 		private SQLiteDatabase db;
 		
-		public databaseHelper(Context context)
+		public DatabaseHelper(Context context)
 		{
 			super(context, DATABASE, null, DATABASEVERSION);
 			db = this.getWritableDatabase();
@@ -28,6 +29,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 					" swticher TEXT, " +
 					" start_time TEXT, " +
 					" end_time TEXT, " +
+					" start_date TEXT, " +
+					" end_date TEXT, " +
 					" brightness TEXT, " +
 					" sounds TEXT, " +
 					" repeat_day TEXT, " +
@@ -51,6 +54,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 		
 		public Cursor getAll(String tableName, String whereStr) 
 		{
+			Log.d("DB Query", "SELECT * FROM " + tableName + whereStr);
 		    return db.rawQuery("SELECT * FROM " + tableName + whereStr, null);
 		}
 		

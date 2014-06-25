@@ -3,16 +3,23 @@
     android:id="@+id/item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:focusable="true"
+	android:focusableInTouchMode="true">
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
-	    android:background="@drawable/layer_item_selector" >
+	    android:background="@drawable/layer_item_selector" 
+    	android:padding="3dp">
 	    <LinearLayout
 	  	   android:layout_width="match_parent"
 	  	   android:layout_height="wrap_content"
-	  	   android:orientation="horizontal">
+	  	   android:orientation="horizontal"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp"
+           android:focusable="true"
+	       android:focusableInTouchMode="true">
 	  	   <EditText 
 	  	       android:id="@+id/title"
 	  	       android:layout_width="0dp"
@@ -20,6 +27,7 @@
 	  	       android:layout_height="wrap_content"
 	  	       android:hint="@string/column_title_hint"
 	  	       android:layout_marginRight="20dp"
+	  	       android:nextFocusUp="@+id/item_container"
 	  	       />
 	  	   <ToggleButton 
 			   android:id="@+id/switcher"
@@ -32,7 +40,9 @@
 	    <LinearLayout
 	  	   android:layout_width="match_parent"
 	  	   android:layout_height="wrap_content"
-	  	   android:orientation="horizontal">
+	  	   android:orientation="horizontal"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp">
 	  	   <TextView 
 	  	       android:id="@+id/start_time_text"
 	  	       android:layout_width="0dp"
@@ -48,8 +58,7 @@
 	  	       android:layout_width="0dp"
 	  	       android:layout_weight="0.35"
 	  	       android:layout_height="wrap_content"
-	  	       android:textSize="22sp"
-	  	       android:text="00:00 AM"
+	  	       android:textSize="26sp"
 	  	       />
 	  	   <TextView 
 	  	       android:id="@+id/end_time_text"
@@ -65,23 +74,29 @@
 	  	       android:id="@+id/end_time"
 	  	       android:layout_width="0dp"
 	  	       android:layout_weight="0.35"
-	  	       android:textSize="22sp"
+	  	       android:textSize="26sp"
 	  	       android:layout_height="wrap_content"
-	  	       android:text="04:00 AM"
 	  	       />
 	    </LinearLayout>  
 	    <LinearLayout
 	  	   android:layout_width="match_parent"
 	  	   android:layout_height="wrap_content"
-	  	   android:orientation="horizontal">
+	  	   android:orientation="horizontal"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp">
 	  	   <ImageView 
 	  	       android:layout_width="wrap_content"
 	  	       android:layout_height="wrap_content"
 	  	       android:src="@drawable/ic_action_brightness_medium"
 	  	       />
+	  	   <TextView 
+	  	       android:layout_width="wrap_content"
+	  	       android:layout_height="wrap_content"
+	  	       android:layout_gravity="center_vertical"
+	  	       android:text="@string/column_brightness"/>
 	  	   <SeekBar 
 	  	       android:id="@+id/brightness" 
-	  	       android:max="100" 
+	  	       android:max="255" 
 	  	       android:layout_width="match_parent" 
 	  	       android:layout_height="wrap_content">	       
 	  	   </SeekBar>
@@ -89,22 +104,30 @@
 	    <LinearLayout
 	  	   android:layout_width="match_parent"
 	  	   android:layout_height="wrap_content"
-	  	   android:orientation="horizontal">
+	  	   android:orientation="horizontal"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp">
 	  	   <ImageView 
 	  	       android:layout_width="wrap_content"
 	  	       android:layout_height="wrap_content"
 	  	       android:src="@drawable/ic_action_volume_on"
 	  	       />
-	  	   <SeekBar 
-	  	       android:id="@+id/sounds" 
-	  	       android:max="100" 
-	  	       android:layout_width="match_parent" 
-	  	       android:layout_height="wrap_content">	       
-	  	   </SeekBar>
+	  	   <TextView 
+	  	       android:layout_width="wrap_content"
+	  	       android:layout_height="wrap_content"
+	  	       android:layout_gravity="center_vertical"
+	  	       android:text="@string/column_sound_mode_text"/>
+	  	   <Spinner  
+	  	       android:id="@+id/sound_mode"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:drawSelectorOnTop="false"/>
 	    </LinearLayout>   
 	    <RelativeLayout
 	  	   android:layout_width="match_parent"
-	  	   android:layout_height="wrap_content">
+	  	   android:layout_height="wrap_content"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp">
 	  	   <CheckBox 
 			   android:id="@+id/repeat_day"
 	  	       android:layout_width="wrap_content"
@@ -115,7 +138,9 @@
 	    <LinearLayout
 	  	   android:layout_width="match_parent"
 	  	   android:layout_height="wrap_content"
-	  	   android:orientation="horizontal">
+	  	   android:orientation="horizontal"
+	  	   android:paddingTop="5dp"
+	  	   android:paddingBottom="5dp">
 	  	   <ToggleButton 
 			   android:id="@+id/week_mon"
 	  	       android:layout_width="0dp"

@@ -1,5 +1,9 @@
 package com.cooltey.lazymaster;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,22 +13,33 @@ import android.widget.LinearLayout;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.cooltey.lazymaster.lib.columnItem;
-import com.cooltey.lazymaster.lib.databaseHelper;
+import com.cooltey.lazymaster.lib.DatabaseHelper;
+import com.cooltey.lazymaster.lib.MainItemActions;
 
 public class MainActivity extends SherlockFragmentActivity {
 
-	private databaseHelper db;
+	private DatabaseHelper db;
 	private LinearLayout mainContent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		db = new databaseHelper(this);
+		db = new DatabaseHelper(this);
 		mainContent = (LinearLayout) findViewById(R.id.scrollContent); 
+		
 		setListView();
 		
+		setReceiver();
 		getSupportActionBar();
+	}
+	
+	private void setReceiver(){
+		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        // set receiver action
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        // set timer
+        alarmManager.setRepeating(AlarmManager.RTC, 0, 10 * 1000, pendingIntent);
 	}
 	
 	private void setListView(){
@@ -35,12 +50,12 @@ public class MainActivity extends SherlockFragmentActivity {
 				getData.moveToFirst();
 				
 				for(int i = 0; i < getData.getCount(); i++){
-					columnItem ci = new columnItem(this, getData);
+					MainItemActions ci = new MainItemActions(this, getData);
 					View getView = ci.getItemView();
 					
 					mainContent.addView(getView);
 					
-					getData.moveToNext();
+					getData.moveToNext(); 
 				}
 			}
 		}catch(Exception e){
@@ -65,6 +80,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	        						"swticher", 
 	        						"start_time", 
 	        						"end_time", 
+	        						"start_date", 
+	        						"end_date", 
 	        						"brightness", 
 	        						"sounds", 
 	        						"repeat_day",
@@ -78,6 +95,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	        	
 	        	String[] values = {"", 
 								   "false", 
+								   "00:00", 
+								   "00:00",
 								   "", 
 								   "", 
 								   "", 

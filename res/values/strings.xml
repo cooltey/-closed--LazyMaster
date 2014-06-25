@@ -24,5 +24,6 @@
     <string name="column_week_fri">Fri</string>
     <string name="column_week_sat">Sat</string>
     <string name="column_week_sun">Sun</string>
+    <string name="column_brightness">Brightness</string>
 
 </resources>
