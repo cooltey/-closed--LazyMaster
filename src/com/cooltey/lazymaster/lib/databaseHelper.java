@@ -43,6 +43,12 @@ import android.util.Log;
 					" week_sat TEXT);";
 			
 			db.execSQL(DATABASE_CREATE_TABLE);		
+			
+			DATABASE_CREATE_TABLE = "CREATE TABLE lazy_master_default (_ID INTEGER PRIMARY KEY, " +
+					" brightness TEXT, " +
+					" sounds TEXT)";
+			
+			db.execSQL(DATABASE_CREATE_TABLE);	
 		}
 		
 		@Override

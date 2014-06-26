@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ import android.widget.LinearLayout;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.cooltey.lazymaster.lib.AudioController;
+import com.cooltey.lazymaster.lib.BrightnessController;
 import com.cooltey.lazymaster.lib.DatabaseHelper;
 import com.cooltey.lazymaster.lib.MainItemActions;
 
@@ -20,17 +23,21 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	private DatabaseHelper db;
 	private LinearLayout mainContent;
+	private Context mContext;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mContext = this;
 		db = new DatabaseHelper(this);
 		mainContent = (LinearLayout) findViewById(R.id.scrollContent); 
 		
+		setInitialSetting();
 		setListView();
 		
 		setReceiver();
 		getSupportActionBar();
+		
 	}
 	
 	private void setReceiver(){
@@ -69,6 +76,25 @@ public class MainActivity extends SherlockFragmentActivity {
 		return true;
 	}
 	
+	private void setInitialSetting(){
+	
+		AudioController ac = new AudioController(mContext);
+		String soundMode = ac.getOriginalSoundMode();
+		
+		BrightnessController bc = new BrightnessController(mContext);
+		String brightness = bc.getOriginalBrightness() + "";
+		
+		// check system has activate the lazy mode
+		SharedPreferences settings = mContext.getSharedPreferences("system_info", 0);
+		
+		boolean checkActivated = settings.getBoolean("activated", false);
+		if(!checkActivated){
+		    SharedPreferences.Editor getData = settings.edit();
+		    getData.putString("sounds", soundMode);
+		    getData.putString("brightness", brightness);
+		    getData.commit();
+		}
+	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

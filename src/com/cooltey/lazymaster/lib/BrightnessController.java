@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 
@@ -41,6 +42,9 @@ public class BrightnessController{
         layoutpars.screenBrightness = birghtness / (float)255;
         //Apply attribute changes to this window
         mWindow.setAttributes(layoutpars);
+        
+
+	    Log.d("setTmpBrightness", "birghtness: "  +birghtness);
 	}
 	
 	public int getOriginalBrightness(){

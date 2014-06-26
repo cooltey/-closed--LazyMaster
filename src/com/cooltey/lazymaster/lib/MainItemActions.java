@@ -7,6 +7,7 @@ import java.util.Date;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -235,7 +236,6 @@ public class MainItemActions{
 						 tv.setText(newHours + ":" + newMins);
 						 // set data
 						 setColumnData.getStartTime = newHours + ":" + newMins;
-						 setDateForAlarm();
 						 // save into db
 						saveIntoDB();
 					}  
@@ -280,7 +280,6 @@ public class MainItemActions{
 						 tv.setText(newHours + ":" + newMins);
 						 // set data
 						 setColumnData.getEndTime = newHours + ":" + newMins;
-						 setDateForAlarm();
 						 // save into db
 						saveIntoDB();
 					}  
@@ -402,6 +401,13 @@ public class MainItemActions{
 	
 	private void saveIntoDB(){
 
+		 SharedPreferences settings = mContext.getSharedPreferences("system_info", 0);	
+		 SharedPreferences.Editor getData = settings.edit();
+	     getData.putBoolean("activated", false);
+	     getData.commit();
+	    
+		 setDateForAlarm();
+		
 		 DatabaseHelper db = new DatabaseHelper(mContext);
 		 
 		 String[] columns = {"title", 
