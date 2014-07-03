@@ -196,8 +196,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 	
 	private void startSetUp(Cursor cursor){
 
-		SharedPreferences settings = mContext.getSharedPreferences("system_info", 0);				
-		if(!settings.getBoolean("activated", false)){
+		SharedPreferences settings = mContext.getSharedPreferences("system_info", 0);	
+		boolean isActivated = settings.getBoolean("activated", false);
+		int activateId = settings.getInt("task_id", 0);
+		if(!isActivated || activateId !=  cursor.getInt(0)){
 			setColumnData.getTitle 			= cursor.getString(1);
 			setColumnData.getBrightness 	= cursor.getInt(7);
 			setColumnData.getSounds 		= cursor.getInt(8);
@@ -210,7 +212,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 			intent.putExtras(bundle);
 			intent.setClassName("com.cooltey.lazymaster", "com.cooltey.lazymaster.ModeUpdateActivity");
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		    mContext.startActivity(intent);
 		    	
@@ -243,7 +244,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 			intent.putExtras(bundle);
 			intent.setClassName("com.cooltey.lazymaster", "com.cooltey.lazymaster.ModeUpdateActivity");
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		    mContext.startActivity(intent);
 		    

@@ -404,6 +404,7 @@ public class MainItemActions{
 		 SharedPreferences settings = mContext.getSharedPreferences("system_info", 0);	
 		 SharedPreferences.Editor getData = settings.edit();
 	     getData.putBoolean("activated", false);
+	     getData.putInt("task_id", Integer.parseInt(setColumnData.getId));
 	     getData.commit();
 	    
 		 setDateForAlarm();
